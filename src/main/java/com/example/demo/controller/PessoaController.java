@@ -1,9 +1,6 @@
 package com.example.demo.controller;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -42,14 +39,6 @@ public class PessoaController {
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	public void deleteItem(@PathVariable Long id) throws Exception {
 		pessoaService.delete(new PessoaEntity(id));
-	}
-
-	@RequestMapping("/resource")
-	public Map<String, Object> home() {
-		Map<String, Object> model = new HashMap<String, Object>();
-		model.put("id", UUID.randomUUID().toString());
-		model.put("content", "Hello World");
-		return model;
 	}
 
 }

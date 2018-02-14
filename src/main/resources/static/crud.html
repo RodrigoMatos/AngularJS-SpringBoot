@@ -32,7 +32,7 @@
 				<tr ng-repeat="item in controller.items">
 					<td>{{ item.codigo }}</td>
 					<td>{{ item.nome }}</td>
-					<td style="width: 100px;text-align: center;"><button type="button" class="btn btn-danger">Excluir</button></td>
+					<td style="width: 100px;text-align: center;"><button type="button" class="btn btn-danger" ng-click="controller.deleteItem(item)">Excluir</button></td>
 				</tr>
 			</tbody>
 		</table>

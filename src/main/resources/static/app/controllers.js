@@ -18,11 +18,35 @@
             });
 		}
 
-		this.insertItem = function() {
+		this.callInsertItem = function(item) {
 			$http({
                 url: "pessoa",
                 method: "POST",
-                data:controller.newItem
+                data:item
+            }).error(function (data, status, headers, config) {
+                console.error(data);
+            }).success(function (data, status, headers, config) {
+               controller.init();
+            });
+		};
+		
+		this.callDeleteItem = function(item) {
+			$http({
+                url: "pessoa",
+                method: "DELETE",
+                data:item
+            }).error(function (data, status, headers, config) {
+                console.error(data);
+            }).success(function (data, status, headers, config) {
+               controller.init();
+            });
+		};
+
+		this.callUpdateItem = function(item) {
+			$http({
+                url: "pessoa",
+                method: "PUT",
+                data:item
             }).error(function (data, status, headers, config) {
                 console.error(data);
             }).success(function (data, status, headers, config) {
@@ -32,26 +56,27 @@
 
 		this.updateItem = function() {
 			var found = false;
-			for(var i in controller.items){
+			for ( var i in controller.items) {
 				var item = controller.items[i];
-				if(item.codigo == controller.newItem.codigo){
+				if (item.codigo == controller.newItem.codigo) {
 					found = true;
 					item.nome = controller.newItem.nome;
 					controller.newItem = {};
+					controller.callUpdateItem(item);
+					break;
 				}
 			}
-			
-			if(!found)
-			{
-				this.insertItem();
+			if (!found) {
+				this.callInsertItem(controller.newItem);
 			}
 		};
 
 		this.deleteItem = function(item) {
-			for(var i in controller.items){
+			for ( var i in controller.items) {
 				var citem = controller.items[i];
-				if(citem.codigo == item.codigo){
-					controller.items.splice(i, 1);;
+				if (citem.codigo == item.codigo) {
+					//controller.callDeleteItem(item);
+					break;
 				}
 			}
 		};
