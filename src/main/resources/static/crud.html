@@ -3,7 +3,9 @@
 		<h1>Crud Pessoas</h1>
 	</div>
 	<div class="alert alert-info" role="alert" ng-hide="controller.items && controller.items.length > 0">There are no items yet.</div>
-
+	<div class="alert {{ controller.alerta.status }}" role="alert" ng-hide="controller.alerta == null">
+	  {{ controller.alerta.msg }} 
+	</div>
 	<div class="form-group row">
 		<div class="col-sm-3">
 			<input class="form-control" type="text" ng-model="controller.newItem.codigo" placeholder="Codigo"/>

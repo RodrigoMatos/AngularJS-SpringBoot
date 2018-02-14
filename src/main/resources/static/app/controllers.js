@@ -7,6 +7,12 @@
 		this.items = [];
 		this.newItem = {};
 		
+		//this.alerta = {status:'alert-success', msg:'teste'};
+		
+		this.addMsg = function(tipo, texto) {
+			controller.alerta = {status:tipo, msg:texto};
+		}
+		
 		this.init = function(){
 		  $http({
                 url: "pessoa",
@@ -24,8 +30,10 @@
                 method: "POST",
                 data:item
             }).error(function (data, status, headers, config) {
+            	controller.addMsg('alert-danger', data.message);
                 console.error(data);
             }).success(function (data, status, headers, config) {
+            	controller.addMsg('alert-success', 'Registro cadastrado com sucesso!');
                controller.init();
             });
 		};
@@ -36,8 +44,10 @@
                 method: "POST",
                 data:item
             }).error(function (data, status, headers, config) {
+            	controller.addMsg('alert-danger', data.message);
                 console.error(data);
             }).success(function (data, status, headers, config) {
+            	controller.addMsg('alert-success', 'Registro removido com sucesso!');
             	controller.init();
             });
 		};
@@ -48,8 +58,10 @@
                 method: "POST",
                 data:item
             }).error(function (data, status, headers, config) {
+            	controller.addMsg('alert-danger', data.message);
                 console.error(data);
             }).success(function (data, status, headers, config) {
+            	controller.addMsg('alert-success', 'Registro atualizado com sucesso!');
                controller.init();
             });
 		};
