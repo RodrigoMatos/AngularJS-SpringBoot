@@ -20,23 +20,23 @@ public class PessoaController {
 
 	@RequestMapping(method = RequestMethod.GET)
 	public List<PessoaEntity> findItems() {
-		return pessoaService.findAll();
+		return this.pessoaService.findAll();
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
 	public PessoaEntity addItem(@RequestBody PessoaEntity pessoa) throws Exception {
 		pessoa.setCodigo(null);
-		return (PessoaEntity) pessoaService.save(pessoa);
+		return (PessoaEntity) this.pessoaService.save(pessoa);
 	}
 
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
 	public PessoaEntity updateItem(@RequestBody PessoaEntity pessoa) throws Exception {
-		return (PessoaEntity) pessoaService.save(pessoa);
+		return (PessoaEntity) this.pessoaService.save(pessoa);
 	}
 
 	@RequestMapping(value = "/delete", method = RequestMethod.POST)
 	public void deleteItem(PessoaEntity pessoa) throws Exception {
-		pessoaService.delete(pessoa);
+		this.pessoaService.delete(pessoa);
 	}
 
 }

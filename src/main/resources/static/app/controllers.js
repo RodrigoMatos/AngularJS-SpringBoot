@@ -6,13 +6,12 @@
         var controller = this;
 		this.items = [];
 		this.newItem = {};
-		
-		//this.alerta = {status:'alert-success', msg:'teste'};
-		
+		this.alerta = {};
+
 		this.addMsg = function(tipo, texto) {
 			controller.alerta = {status:tipo, msg:texto};
 		}
-		
+
 		this.init = function(){
 		  $http({
                 url: "pessoa",
