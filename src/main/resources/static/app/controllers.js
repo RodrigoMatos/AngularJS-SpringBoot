@@ -32,20 +32,20 @@
 		
 		this.callDeleteItem = function(item) {
 			$http({
-                url: "pessoa",
-                method: "DELETE",
+                url: "pessoa/delete",
+                method: "POST",
                 data:item
             }).error(function (data, status, headers, config) {
                 console.error(data);
             }).success(function (data, status, headers, config) {
-               controller.init();
+            	controller.init();
             });
 		};
 
 		this.callUpdateItem = function(item) {
 			$http({
-                url: "pessoa",
-                method: "PUT",
+                url: "pessoa/update",
+                method: "POST",
                 data:item
             }).error(function (data, status, headers, config) {
                 console.error(data);
@@ -75,7 +75,7 @@
 			for ( var i in controller.items) {
 				var citem = controller.items[i];
 				if (citem.codigo == item.codigo) {
-					//controller.callDeleteItem(item);
+					controller.callDeleteItem(citem);
 					break;
 				}
 			}
