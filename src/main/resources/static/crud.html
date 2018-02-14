@@ -1,0 +1,27 @@
+<div class="container" ng-controller="MyController as controller" ng-init="controller.init()">
+	<div class="page-header">
+		<h1>A checklist</h1>
+	</div>
+	<div class="alert alert-info" role="alert" ng-hide="controller.items && controller.items.length > 0">There are no items yet.</div>
+	
+	<div class="form-horizontal">
+		<input type="text" ng-model="controller.newItem.id" placeholder="id"/>
+		<input type="text" ng-model="controller.newItem.description" placeholder="description"/>
+		<input type="checkbox" ng-model="controller.newItem.checked" />
+		<button ng-click="controller.updateItem()">Add</button>
+	</div>
+	
+	<form class="form-horizontal">
+		<div class="form-group" ng-repeat="item in controller.items">
+			<div class="checkbox col-xs-9">
+				<label> <input type="checkbox" ng-model="item.checked" ng-change="controller.updateItem(item)" /> {{item.description}} </label>
+			</div>
+			<div class="col-xs-3">
+				<button class="pull-right btn btn-danger" type="button" title="Delete" ng-click="controller.deleteItem(item)">
+					<span class="glyphicon glyphicon-trash"></span> excluir
+				</button>
+			</div>
+		</div>
+		<hr />
+	</form>
+</div>
