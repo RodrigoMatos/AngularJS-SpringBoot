@@ -8,38 +8,49 @@
 		this.newItem = {};
 		
 		this.init = function(){
-			controller.items.push({ id: 0, checked: true, description: 'abc 1' });
-			controller.items.push({ id: 1, checked: true, description: 'abc 2' });
-			controller.items.push({ id: 2, checked: false, description: 'abc 3' });
+		  $http({
+                url: "pessoa",
+                method: "GET"
+            }).error(function (data, status, headers, config) {
+                console.error(data);
+            }).success(function (data, status, headers, config) {
+               controller.items = data;
+            });
 		}
 
-		this.addItem = function() {
-			controller.items.push(controller.newItem);
-			controller.newItem = {};
+		this.insertItem = function() {
+			$http({
+                url: "pessoa",
+                method: "POST",
+                data:controller.newItem
+            }).error(function (data, status, headers, config) {
+                console.error(data);
+            }).success(function (data, status, headers, config) {
+               controller.init();
+            });
 		};
 
 		this.updateItem = function() {
 			var found = false;
 			for(var i in controller.items){
 				var item = controller.items[i];
-				if(item.id == controller.newItem.id){
+				if(item.codigo == controller.newItem.codigo){
 					found = true;
-					item.description = controller.newItem.description;
-					item.checked = controller.newItem.checked;
-					controller.newItem = {}
+					item.nome = controller.newItem.nome;
+					controller.newItem = {};
 				}
 			}
 			
 			if(!found)
 			{
-				this.addItem();
+				this.insertItem();
 			}
 		};
 
 		this.deleteItem = function(item) {
 			for(var i in controller.items){
 				var citem = controller.items[i];
-				if(citem.id == item.id){
+				if(citem.codigo == item.codigo){
 					controller.items.splice(i, 1);;
 				}
 			}
