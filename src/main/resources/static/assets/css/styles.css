@@ -22,10 +22,9 @@
 }
 
 .cabecalho {
-	font-size: 30pt;
 }
 
-.cabecalho h1>span, h2>span, h3>span {
+.cabecalho h1>span, h2>span, h3>span, h4>span, h5>span {
 	background-color: #e2e2e2;
     border-radius: 25px;
     font-size: 15pt;
