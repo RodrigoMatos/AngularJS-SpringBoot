@@ -10,6 +10,8 @@
 		this.newItem = {};
 		this.alerta = null;
 		this.alertaCadastro = null;
+		this.ocultarCadastro = true;
+		this.ocultarConfirm = true;
 
 		this.addMsg = function(tipo, texto) {
 			controller.alerta = {
@@ -97,6 +99,7 @@
 
 		this.deleteItem = function() {
 			controller.callDeleteItem(controller.newItem);
+			this.closeModalConfirm();
 		};
 
 		this.carregarItem = function(item) {
@@ -104,6 +107,7 @@
 				codigo : item.codigo,
 				nome : item.nome
 			};
+			this.showModalCadastro();
 		};
 
 		this.findById = function(id) {
@@ -113,19 +117,30 @@
 		}
 
 		this.limparCampos = function() {
+			this.showModalCadastro();
 			controller.newItem = {};
 		}
 		
 		this.closeModalCadastro = function() {
-			this.alertaCadastro = null;
-			$("#modalCadastro").removeClass("in");
-		    $(".modal-backdrop").remove();
-		    $("#modalCadastro").hide();
+			controller.ocultarCadastro = true;
 		};
+		
+		this.showModalCadastro = function() {
+			controller.ocultarCadastro = false;
+		};
+
+		this.closeModalConfirm = function() {
+			controller.ocultarConfirm = true;
+		}
+
+		this.showModalConfirm = function() {
+			controller.ocultarConfirm = false;
+		}
 
 		this.setNewItem = function(item) {
 			controller.newItem = item;
+			this.showModalConfirm();
 		} 
-
 	}
+
 })();

@@ -11,3 +11,9 @@
 	position: relative;
 	padding-bottom: 25px;
 }
+
+.telaModal {
+	position: absolute;
+	top: 15%;
+	left: 35%;
+}
