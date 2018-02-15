@@ -15,7 +15,7 @@
 
 	    $stateProvider.state({
 	        title: 'crud',
-	        name: 'index.crud',
+	        name: 'crud',
 	        url: '/crud',
 	        templateUrl: 'crud.html',
 	    });

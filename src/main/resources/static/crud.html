@@ -12,12 +12,14 @@
 			<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalCadastro" ng-click="controller.limparCampos()">Novo</button>
 		</div>
 
+		<div class="clean"></div>
+
 		<table class="table table-striped table-hover">
 			<thead>
 				<tr>
 					<th scope="col" style="width:15%;">C&oacute;digo</th>
 					<th scope="col">Nome</th>
-					<th scope="col" align="center" style="width: 200px;"></th>
+					<th scope="col" class="text-center" style="width: 150px;">A&ccedil;&otilde;es</th>
 				</tr>			
 			</thead>
 			<tbody>
@@ -27,7 +29,7 @@
 				<tr ng-repeat="item in controller.items">
 					<td>{{ item.codigo }}</td>
 					<td>{{ item.nome }}</td>
-					<td align="center" style="width: 200px;">
+					<td align="center" style="width: 150px;">
 						<button type="button" class="btn btn-warning btn-sm" ng-click="controller.carregarItem(item)" data-toggle="modal" data-target="#modalCadastro">Editar</button>
 						<button type="button" class="btn btn-danger btn-sm" data-toggle="modal" ng-click="controller.setNewItem(item)" data-target="#confirm-delete">Excluir</button>
 					</td>

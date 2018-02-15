@@ -1,0 +1,13 @@
+.footer {
+	height: 50px;
+	background-color: #f6f6f6;
+	border-radius: 4px;
+	padding: 15px;
+	text-align: center;
+	width: 100%;
+}
+
+.clean {
+	position: relative;
+	padding-bottom: 25px;
+}
