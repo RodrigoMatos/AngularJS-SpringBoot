@@ -95,12 +95,8 @@
 			}
 		};
 
-		this.deleteItem = function(item) {
-			var found = this.findById(item.codigo);
-			if (found != null && found.length > 0) {
-				var cItem = found[0];
-				controller.callDeleteItem(cItem);
-			}
+		this.deleteItem = function() {
+			controller.callDeleteItem(controller.newItem);
 		};
 
 		this.carregarItem = function(item) {
@@ -116,12 +112,20 @@
 			});
 		}
 
+		this.limparCampos = function() {
+			controller.newItem = {};
+		}
+		
 		this.closeModalCadastro = function() {
 			this.alertaCadastro = null;
 			$("#modalCadastro").removeClass("in");
 		    $(".modal-backdrop").remove();
 		    $("#modalCadastro").hide();
 		};
+
+		this.setNewItem = function(item) {
+			controller.newItem = item;
+		} 
 
 	}
 })();
