@@ -116,7 +116,12 @@
 			});
 		}
 
-		this.limparCampos = function() {
+		this.cleanAlerts = function() {
+			controller.alerta = null;
+			controller.alertaCadastro = null;
+		}
+		
+		this.novo = function() {
 			this.showModalCadastro();
 			controller.newItem = {};
 		}
@@ -126,6 +131,7 @@
 		};
 		
 		this.showModalCadastro = function() {
+			this.cleanAlerts();
 			controller.ocultarCadastro = false;
 		};
 
@@ -134,11 +140,13 @@
 		}
 
 		this.showModalConfirm = function() {
+			this.cleanAlerts();
 			controller.ocultarConfirm = false;
 		}
 
 		this.setNewItem = function(item) {
 			controller.newItem = item;
+			this.cleanAlerts();
 			this.showModalConfirm();
 		} 
 	}

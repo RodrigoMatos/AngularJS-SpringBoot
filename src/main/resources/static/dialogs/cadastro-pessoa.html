@@ -1,12 +1,12 @@
 <div class="telaModal" ng-hide="controller.ocultarCadastro" id="modalCadastro" tabindex="-1" role="dialog" aria-labelledby="modalCadastroLabel" aria-hidden="true">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
-			<div class="modal-header">
-				<h3 class="modal-title col-sm-10" id="modalCadastroLabel">Pessoa - Cadastro</h3>
+			<div class="modal-header cabecalho">
+				<h3 class="modal-title col-sm-10" id="modalCadastroLabel">Pessoa<span>Cadastro</span></h3>
 		        <button type="button" class="close" ng-click="controller.closeModalCadastro()">
 		          <span aria-hidden="true">&times;</span>
 		        </button>
-     			</div>
+     		</div>
 			<div class="modal-body">
 				<div class="alert {{ controller.alertaCadastro.status }}" role="alert" ng-hide="controller.alertaCadastro == null">
 				  {{ controller.alertaCadastro.msg }} 

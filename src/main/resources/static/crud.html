@@ -1,6 +1,6 @@
 <div class="container" ng-controller="MyController as controller" ng-init="controller.init()">
-	<div class="page-header">
-		<h1>Pessoas - Consulta</h1>
+	<div class="page-header cabecalho">
+		<h1>Pessoa<span>Consulta</span></h1>
 	</div>
 	<div class="alert {{ controller.alerta.status }}" role="alert" ng-hide="controller.alerta == null">
 	  {{ controller.alerta.msg }} 
@@ -9,7 +9,7 @@
 	<form class="form-horizontal">
 
 		<div style="text-align: right;">
-			<button type="button" class="btn btn-primary" data-toggle="modal" ng-click="controller.limparCampos()">Novo</button>
+			<button type="button" class="btn btn-primary" data-toggle="modal" ng-click="controller.novo()">Novo</button>
 		</div>
 
 		<div class="clean"></div>
@@ -31,17 +31,19 @@
 					<td>{{ item.nome }}</td>
 					<td align="center" style="width: 150px;">
 						<button type="button" class="btn btn-warning btn-sm" ng-click="controller.carregarItem(item)">Editar</button>
-						<button type="button" class="btn btn-danger btn-sm" ng-click="controller.setNewItem(item)" data-target="#confirm-delete">Excluir</button>
+						<button type="button" class="btn btn-danger btn-sm" ng-click="controller.setNewItem(item)">Excluir</button>
 					</td>
 				</tr>
 			</tbody>
 		</table>
 		<hr/>
 	</form>
-	
+
 	<!-- includes -->
 	<div ng-include="'dialogs/cadastro-pessoa.html'"></div>
 	<div ng-include="'dialogs/confirmExcluir.html'"></div>
+	
+	<div class="modal-backdrop fade show" style="z-index: 5" ng-hide="controller.ocultarCadastro && controller.ocultarConfirm"></div>
 
 </div>
 
