@@ -1,16 +1,15 @@
 <div class="container" ng-controller="MyController as controller" ng-init="controller.init()">
 	<div class="page-header">
-		<h1>Crud Pessoas</h1>
+		<h1>Cadastro de Pessoas</h1>
 	</div>
-	<div class="alert alert-info" role="alert" ng-hide="controller.items && controller.items.length > 0">There are no items yet.</div>
 	<div class="alert {{ controller.alerta.status }}" role="alert" ng-hide="controller.alerta == null">
 	  {{ controller.alerta.msg }} 
 	</div>
 	<div class="form-group row">
-		<div class="col-sm-3">
-			<input class="form-control" type="text" ng-model="controller.newItem.codigo" placeholder="Codigo"/>
+		<div class="col-sm-2">
+			<input class="form-control" type="text" ng-model="controller.newItem.codigo" placeholder="C&oacute;digo" disabled="true"/>
 		</div>
-		<div class="col-sm-6">
+		<div class="col-sm-7">
 			<input class="form-control" type="text" ng-model="controller.newItem.nome" placeholder="Nome"/>
 		</div>
 		<div class="col-sm-3">
@@ -22,21 +21,28 @@
 
 		<div style="position:relative;padding-bottom:25px;"></div>
 
-		<table class="table">
+		<table class="table table-striped table-hover">
 			<thead>
 				<tr>
-					<th scope="col">Codigo</th>
+					<th scope="col" style="width:15%;">C&oacute;digo</th>
 					<th scope="col">Nome</th>
-					<th scope="col" style="width: 100px;text-align: center;">#</th>
+					<th scope="col" align="center" style="width: 200px;"></th>
 				</tr>			
 			</thead>
 			<tbody>
+				<tr ng-hide="controller.items && controller.items.length > 0">
+					<td colspan="3" align="center">N&atilde;o existem registros</td>
+				</tr>
 				<tr ng-repeat="item in controller.items">
 					<td>{{ item.codigo }}</td>
 					<td>{{ item.nome }}</td>
-					<td style="width: 100px;text-align: center;"><button type="button" class="btn btn-danger" ng-click="controller.deleteItem(item)">Excluir</button></td>
+					<td align="center" style="width: 200px;">
+						<button type="button" class="btn btn-warning btn-sm" ng-click="controller.carregarItem(item)">Editar</button>
+						<button type="button" class="btn btn-danger btn-sm" ng-click="controller.deleteItem(item)">Excluir</button>
+					</td>
 				</tr>
 			</tbody>
 		</table>
+		<hr/>
 	</form>
 </div>

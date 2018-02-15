@@ -35,7 +35,7 @@ public class PessoaController {
 	}
 
 	@RequestMapping(value = "/delete", method = RequestMethod.POST)
-	public void deleteItem(PessoaEntity pessoa) throws Exception {
+	public void deleteItem(@RequestBody PessoaEntity pessoa) throws Exception {
 		this.pessoaService.delete(pessoa);
 	}
 

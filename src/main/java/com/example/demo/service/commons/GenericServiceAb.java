@@ -11,7 +11,6 @@ import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.example.demo.entity.PessoaEntity;
 import com.example.demo.service.commons.interfaces.GenericService;
 
 @Component
@@ -21,18 +20,8 @@ public abstract class GenericServiceAb<Entity extends Object, ID extends Seriali
 	protected void validate(Entity e) throws Exception {
 		Set<ConstraintViolation<Entity>> constraintViolations = validator.validate(e);
 		if (!constraintViolations.isEmpty()) {
-			throw new Exception(constraintViolations.toString());
+			throw new Exception(getValidationMessage(constraintViolations));
 		}
-	}
-
-	@Override
-	public void validationSave(Entity e) throws Exception {
-		validate(e);
-	}
-
-	@Override
-	public void validationSaveInBatch(List<Entity> e) throws Exception {
-		validate(e);
 	}
 
 	private String getValidationMessage(Set<ConstraintViolation<Entity>> constraintViolations) {
@@ -44,6 +33,16 @@ public abstract class GenericServiceAb<Entity extends Object, ID extends Seriali
 			buffer.append(constraintViolation.getMessage()).append("\n");
 		}
 		return buffer.toString();
+	}
+
+	@Override
+	public void validationSave(Entity e) throws Exception {
+		validate(e);
+	}
+
+	@Override
+	public void validationSaveInBatch(List<Entity> e) throws Exception {
+		validate(e);
 	}
 
 	protected void validate(List<Entity> e) throws Exception {
@@ -59,7 +58,7 @@ public abstract class GenericServiceAb<Entity extends Object, ID extends Seriali
 			validationDelete(entity);
 		}
 	}
-	
+
 	@Override
 	public void validationDelete(Entity e) throws Exception {
 	}
